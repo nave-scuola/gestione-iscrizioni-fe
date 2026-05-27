@@ -1,1 +1,20 @@
-<h1>Hello, {{ title }}</h1>
+<h1 class="text-center text-primary fw-bolder">{{ title }}</h1>
+
+<div class="container mt-5 text-center fw-bold">
+    <h2 class="mb-5 fw-bold">Test componente Card</h2>
+
+    <!-- 
+    'g-4' distanzia le card sia in orizzontale che in verticale 
+    'mb-5' evita che il contenuto successivo sia troppo attaccato al fondo delle card
+    -->
+    <div class="row row-cols-lg-6 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
+        @for (c of corsi; track c.id) {
+            <app-card
+                [titolo]="c.titolo"
+                [descrizione]="c.descrizione"
+                [image]="c.image"
+            >
+            </app-card>
+        }
+    </div>
+</div>
