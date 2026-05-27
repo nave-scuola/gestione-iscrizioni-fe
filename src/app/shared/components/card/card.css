@@ -1,0 +1,11 @@
+.card-interattiva {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-interattiva:hover {
+    /* --bs- si riferisce a una lista di variabili globali nel codice sorgente */
+    background-color: var(--bs-light) !important;
+    box-shadow: var(--bs-box-shadow) !important;
+    transform: translate(-2px); /* il valore -2px spinge la card verso l'alto */
+}
