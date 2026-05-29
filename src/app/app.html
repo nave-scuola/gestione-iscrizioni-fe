@@ -1,20 +1,31 @@
-<h1 class="text-center text-primary fw-bolder">{{ title }}</h1>
+<div class="container mt-4 text-center fw-bold">
+    
+    <h1 class="mt-4 mb-4 text-center text-primary fw-bolder">{{ title }}</h1>
+    <h2 class="mb-5 fw-bold fs-4 text-secondary">Lista corsi</h2>
 
-<div class="container mt-5 text-center fw-bold">
-    <h2 class="mb-5 fw-bold">Test componente Card</h2>
-
+    <section class="sezione-corsi mb-5">
     <!-- 
     'g-4' distanzia le card sia in orizzontale che in verticale 
     'mb-5' evita che il contenuto successivo sia troppo attaccato al fondo delle card
     -->
-    <div class="row row-cols-lg-6 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
-        @for (c of corsi; track c.id) {
-            <app-card
-                [titolo]="c.titolo"
-                [descrizione]="c.descrizione"
-                [image]="c.image"
-            >
-            </app-card>
-        }
-    </div>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4 mb-5">
+            @for (c of corsi; track c.id) {
+                <app-card
+                    [titolo]="c.titolo"
+                    [descrizione]="c.descrizione"
+                    [image]="c.image"
+                >
+                </app-card>
+            }
+        </div>
+    </section>
+
+    <hr class="my-5 text-muted"> 
+    
+    <section class="sezione-studenti mb-5">
+        <app-lista-studenti></app-lista-studenti>
+    </section>
+
 </div>
+
+
