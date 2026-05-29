@@ -33,4 +33,9 @@ export class ListaStudenti {
     });
 
   });
+
+  onCardClick(item: StudenteRTO): void {
+    console.log("Selezionato: ", item);
+  }
+
 }
