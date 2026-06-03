@@ -1,6 +1,7 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
 import { StudenteRTO } from '../../models/studente.model';
+import { StudenteStore } from '../../services/studente-store';
 
 @Component({
   selector: 'app-lista-studenti',
@@ -10,13 +11,10 @@ import { StudenteRTO } from '../../models/studente.model';
   styleUrl: './lista-studenti.css',
 })
 export class ListaStudenti {
-  titolo = 'Gestione Iscrizioni';
 
-  readonly studenti = signal<StudenteRTO[]>([
-    {idStudente: 1, nome: 'Mario', cognome: 'Rossi', email: 'mario.rossi@email.it', citta: 'Napoli', cf: 'MRGSFE85D67V480F', codiceStudente: 'STU-001'},
-    {idStudente: 2, nome: 'Luigi', cognome: 'Verdi', email: 'luigi.verdi@email.it', citta: 'Milano', cf: 'LGVRDE85D67U789G', codiceStudente: 'STU-002'},
-    {idStudente: 3, nome: 'Laura', cognome: 'Neri', email: 'laura.neri@email.it', citta: 'Molise', cf: 'LRNRIE89F67V998V', codiceStudente: 'STU-003'},
-  ]);
+  private store = inject(StudenteStore);
+  
+  readonly studenti = this.store.studenti;
 
   readonly filtroTesto = signal('');
 
