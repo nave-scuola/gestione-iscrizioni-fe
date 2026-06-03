@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
 import { CorsiStore } from '../../services/corsi-store';
 import { CorsoRTO } from '../../models/corso.model';
+import { CorsiFacade } from '../../services/corsi-facade';
 
 @Component({
   selector: 'app-lista-corsi',
@@ -11,9 +12,9 @@ import { CorsoRTO } from '../../models/corso.model';
   styleUrl: './lista-corsi.css',
 })
 export class ListaCorsi {
-  private store = inject(CorsiStore);
+  private facade = inject(CorsiFacade);
 
-  readonly corsi = this.store.corsi;
+  readonly corsi = this.facade.corsi;
 
   onCorsoClick(item: CorsoRTO): void {
     console.log("Selezionato: ", item);

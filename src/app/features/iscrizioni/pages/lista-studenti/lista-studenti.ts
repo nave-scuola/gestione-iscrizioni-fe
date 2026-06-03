@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
 import { StudenteRTO } from '../../models/studente.model';
 import { StudenteStore } from '../../services/studente-store';
+import { StudenteFacade } from '../../services/studente-facade';
 
 @Component({
   selector: 'app-lista-studenti',
@@ -11,10 +12,9 @@ import { StudenteStore } from '../../services/studente-store';
   styleUrl: './lista-studenti.css',
 })
 export class ListaStudenti {
+  private facade = inject(StudenteFacade);
 
-  private store = inject(StudenteStore);
-  
-  readonly studenti = this.store.studenti;
+  readonly studenti = this.facade.studenti;
 
   readonly filtroTesto = signal('');
 
