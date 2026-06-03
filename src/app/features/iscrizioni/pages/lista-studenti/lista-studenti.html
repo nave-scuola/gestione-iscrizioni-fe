@@ -15,6 +15,7 @@
                     <app-card
                         [titolo]="item.nome + ' ' + item.cognome"
                         [descrizione]="item.codiceStudente"
+                        (selezionato)="onCardClick(item)"
                     >  
                     </app-card>
                 </div>

@@ -18,5 +18,13 @@ export class App {
     {id: 3, titolo: 'Corso HTML', descrizione: 'Corso per test', image: 'https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png'},
   ];
 
+  onCorsoClick(id: number): void {
+    // Uso il metodo .find() per cercare un corso specifico nell'array
+    // Il risultato, ovvero tutte le informazioni del corso, vengono salvate in corsoSelezionato 
+    const corsoSelezionato = this.corsi.find(c => c.id === id);
+
+    console.log("Selezionato: ", corsoSelezionato);
+  }
+
   
 }
