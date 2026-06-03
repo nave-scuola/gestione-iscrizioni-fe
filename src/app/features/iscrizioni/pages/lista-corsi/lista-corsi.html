@@ -1,0 +1,29 @@
+<div class="container mt-4 text-center fw-bold">
+    
+    <h2 class="mb-5 fw-bold fs-4 text-secondary">Lista corsi</h2>
+
+    <!-- 
+    'g-4' distanzia le card sia in orizzontale che in verticale 
+    'mb-5' evita che il contenuto successivo sia troppo attaccato al fondo delle card
+    -->
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4 mb-5">
+        @for (c of corsi(); track c.idCorso) {
+            <app-card
+                [titolo]="c.titolo"
+                [descrizione]="c.descrizione"
+                (selezionato)="onCorsoClick(c)"
+            >
+
+            <ul class="text-start small border-top pt-2">
+                <li><strong>Codice: </strong>{{c.codiceCorso}}</li>
+                <li><strong>Durata: </strong>{{c.durataOre}}</li>
+                <li><strong>Livello: </strong>{{c.livello}}</li>
+                <li><strong>Categoria: </strong>{{c.categoria}}</li>
+            </ul>
+
+            </app-card>
+        }
+    </div>
+    
+
+</div>
