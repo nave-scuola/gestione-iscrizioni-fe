@@ -14,6 +14,7 @@
                     [titolo]="c.titolo"
                     [descrizione]="c.descrizione"
                     [image]="c.image"
+                    (selezionato)="onCorsoClick(c.id)"
                 >
                 </app-card>
             }
