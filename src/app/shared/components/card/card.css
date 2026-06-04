@@ -9,3 +9,14 @@
     box-shadow: var(--bs-box-shadow) !important;
     transform: translate(-2px); /* il valore -2px spinge la card verso l'alto */
 }
+
+.btn-custom {
+    padding: 15px 30px;
+    border: 2px #2c2c2c;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
