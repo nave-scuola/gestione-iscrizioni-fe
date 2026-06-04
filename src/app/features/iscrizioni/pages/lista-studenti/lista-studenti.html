@@ -1,20 +1,22 @@
 <div class="container mt-4">
     
-    <h2 class="mb-5 mt-4 fw-bold text-secondary fs-4">Lista studenti</h2>
+    <h2 class="mb-5 mt-4 fw-bolder text-secondary fs-4">Lista studenti</h2>
 
-    <input type="text" class="form-control rounded-4 mb-4 shadow-sm" placeholder="Cerca..."
+    <input type="text" class="form-control input-custom rounded-4 mb-4 shadow-sm" placeholder="Cerca..."
            [value]="filtroTesto()" (input)="filtroTesto.set($any($event.target).value)" 
     >
 
     @if (studentiFiltrati().length === 0) {
         <div class="alert alert-info">Nessun elemento trovato</div>
     } @else {
-        <div class="row g-3">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-3">
             @for (item of studentiFiltrati(); track item.idStudente) {
                 <div class="col-md-4">
+                    <!-- Momentaneamente uso un'unica [image] per tutti gli studenti -->
                     <app-card
                         [titolo]="item.nome + ' ' + item.cognome"
                         [descrizione]="item.codiceStudente"
+                        [image]="'user-icon.jpg'"
                         (selezionato)="onCardClick(item)"
                     >
                     </app-card>
