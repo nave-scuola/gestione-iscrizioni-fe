@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
-import { CorsiStore } from '../../services/corsi-store';
 import { CorsoRTO } from '../../models/corso.model';
 import { CorsiFacade } from '../../services/corsi-facade';
 

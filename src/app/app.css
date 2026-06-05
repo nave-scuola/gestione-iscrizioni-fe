@@ -1,4 +1,15 @@
 .text-custom {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 50px;
+    font-size: 40px;
+}
+
+.navbar-glass {
+  /* 0.80 si riferisce alla % di trasparenza */
+  background-color: rgba(13, 110, 253, 0.80) !important;
+  /* Sfoca ciò che sta dietro */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Un bordino impercettibile sotto per dare stacco */
+  border-bottom: 1px solid rgba(13, 110, 253, 0.15);
+  box-shadow: 0 4px 30px rgba(13, 110, 253, 0.03);  
 }

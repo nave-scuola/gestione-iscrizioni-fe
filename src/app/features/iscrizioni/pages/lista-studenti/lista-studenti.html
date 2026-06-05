@@ -17,12 +17,16 @@
                         [titolo]="item.nome + ' ' + item.cognome"
                         [descrizione]="item.codiceStudente"
                         [image]="'user-icon.jpg'"
-                        (selezionato)="onCardClick(item)"
+                        (selezionato)="goToDettaglio(item.idStudente)"
                     >
                     </app-card>
                 </div>
             }
         </div>
     }
+
+    <hr class="mt-5">
+
+    <app-lista-corsi/>
 
 </div>
