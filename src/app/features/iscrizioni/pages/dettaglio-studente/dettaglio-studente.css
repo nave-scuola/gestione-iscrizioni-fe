@@ -1,0 +1,17 @@
+.btn-custom {
+    padding: 15px 30px;
+    border: 2px #2c2c2c;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.card-custom {    
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+}

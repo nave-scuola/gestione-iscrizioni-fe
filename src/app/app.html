@@ -1,17 +1,11 @@
+<nav class="navbar navbar-dark bg-primary py-1 sticky-top navbar-glass">
+        <div class="container-fluid d-flex justify-content-center">
+            <a class="navbar-brand text-custom fw-bold mt-4 mb-4 m-0" routerLink="/studenti">Gestione Iscrizioni</a>
+        </div>
+</nav>
+
 <div class="container mt-4 text-center fw-bold">
-    
-    <h1 class="mt-4 mb-4 text-custom text-center text-primary fw-bolder">{{ title }}</h1>
-
-    <section class="sezione-corsi mb-5">
-        <app-lista-corsi></app-lista-corsi>
-    </section>
-
-    <hr class="my-5 text-muted"> 
-    
-    <section class="sezione-studenti mb-5">
-        <app-lista-studenti></app-lista-studenti>
-    </section>
-
+    <router-outlet />
 </div>
 
 

@@ -1,18 +1,20 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
 import { StudenteRTO } from '../../models/studente.model';
-import { StudenteStore } from '../../services/studente-store';
 import { StudenteFacade } from '../../services/studente-facade';
+import { Router } from '@angular/router';
+import { ListaCorsi } from '../lista-corsi/lista-corsi';
 
 @Component({
   selector: 'app-lista-studenti',
   standalone: true,
-  imports: [Card],
+  imports: [Card, ListaCorsi],
   templateUrl: './lista-studenti.html',
   styleUrl: './lista-studenti.css',
 })
 export class ListaStudenti {
   private facade = inject(StudenteFacade);
+  private router = inject(Router);
 
   readonly studenti = this.facade.studenti;
 
@@ -34,6 +36,10 @@ export class ListaStudenti {
 
   onCardClick(item: StudenteRTO): void {
     console.log("Selezionato: ", item);
+  }
+
+  goToDettaglio(idStudente: number): void {
+    this.router.navigate(['/studenti', idStudente]);
   }
 
 }
