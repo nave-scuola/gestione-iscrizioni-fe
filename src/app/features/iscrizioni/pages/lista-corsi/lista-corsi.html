@@ -5,6 +5,7 @@
     <!-- 
     'g-4' distanzia le card sia in orizzontale che in verticale 
     'mb-5' evita che il contenuto successivo sia troppo attaccato al fondo delle card
+    (selezionato) -> se la card è già aperta la chiude (imposta il Signal a null), altrimenti la apre (imposta l'ID del corso)
     -->
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-3 mb-5">
         @for (c of corsi(); track c.idCorso) {
@@ -12,10 +13,31 @@
                 [titolo]="c.titolo"
                 [descrizione]="c.descrizione"
                 [image]="getImmaginiCorso(c.codiceCorso)"
-                (selezionato)="onCorsoClick(c)"
+                (selezionato)="idCorsoAperto.set(idCorsoAperto() === c.idCorso ? null : c.idCorso)"
             >
 
-            <img>            
+            <img>
+
+            <!-- [class.attiva] -> se l'ID salvato nel Signal concide con quello del corso, Angular attiva la classe CSS 'attiva' sul div (facendo apparire l'animazione) -->
+            <div class="mini-finestra-overlay text-center d-flex flex-column justify-content-center p-3 align-items-center" 
+            [class.attiva]="idCorsoAperto() === c.idCorso">
+                
+                <h6 class="fw-bold border-bottom text-primary pb-1 mb-2">Informazioni corso: </h6>
+                
+                <p class="mb-1"><strong>Durata</strong>: {{c.durataOre}}h</p>
+                <p class="mb-1"><strong>Categoria</strong>: {{c.categoria}}</p>
+                <p class="mb-1"><strong>Livello</strong>: {{c.livello}}</p>
+                
+
+                <!--
+                - stopPropagation() blocca il blick ed evita che "rimbalzi" sulla card principale
+                - .set() svuota il Signal, facendo fallire il controllo e chiudendo la finestra
+                -->
+                <button type="button" class="btn-custom btn-sm btn-outline-secondary mt-3"
+                (click)="$event.stopPropagation(); idCorsoAperto.set(null)">
+                    Chiudi
+                </button>
+            </div>
 
             </app-card>
         }

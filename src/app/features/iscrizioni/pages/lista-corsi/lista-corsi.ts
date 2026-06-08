@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
 import { CorsoRTO } from '../../models/corso.model';
 import { CorsiFacade } from '../../services/corsi-facade';
@@ -36,4 +36,7 @@ export class ListaCorsi {
     return elencoImmagini[codiceCorso];
   }
 
+  // Tiene traccia di quale card è aperta
+  // Può contenere un numero/stringa (riferiti a ID del corso) oppure null
+  idCorsoAperto = signal<number | string | null>(null);
 }
