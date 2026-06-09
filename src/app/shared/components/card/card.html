@@ -4,7 +4,7 @@
         (error) implementa un immagine di errore universale 
         Se il browser prova a caricare la stringa dentro image() e fallisce si attiva questo evento
         -->
-        <img #cardImg [src]="image()" [alt]="titolo()" class="card-img-top" (error)="cardImg.src = 'error-icon.jpg'">
+        <img #cardImg [src]="image()" [alt]="titolo()" class="card-img-top w-50 mx-auto mt-3" (error)="cardImg.src = 'error-icon.jpg'">
     }
     <div class="card-body">
         <h5 class="card-title fw-bolder">{{ titolo() }}</h5>
