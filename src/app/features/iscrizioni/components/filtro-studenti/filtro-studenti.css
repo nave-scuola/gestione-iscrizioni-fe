@@ -1,0 +1,31 @@
+.input-custom {
+    border: 2px solid transparent;
+    height: 2.5em;
+    padding-left: 0.8em;
+    outline: none;
+    background-color: #F3F3F3;
+    transition: all 0.5s;
+}
+
+.input-custom:hover,
+.input-custom:focus {
+    border: 2px solid #4A9DEC;
+    box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+    background-color: white;
+}
+
+.btn-custom {
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    /* Fading aggiuntivo per quando passo sopra il button */
+    transition: background-color 0.2s ease-in-out, filter 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.btn-custom:hover {
+    filter: brightness(0.88);
+}

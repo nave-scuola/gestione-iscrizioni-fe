@@ -4,11 +4,12 @@ import { StudenteRTO } from '../../models/studente.model';
 import { StudenteFacade } from '../../services/studente-facade';
 import { Router } from '@angular/router';
 import { ListaCorsi } from '../lista-corsi/lista-corsi';
+import { FiltroStudenti } from "../../components/filtro-studenti/filtro-studenti";
 
 @Component({
   selector: 'app-lista-studenti',
   standalone: true,
-  imports: [Card, ListaCorsi],
+  imports: [Card, ListaCorsi, FiltroStudenti],
   templateUrl: './lista-studenti.html',
   styleUrl: './lista-studenti.css',
 })
@@ -18,21 +19,31 @@ export class ListaStudenti {
 
   readonly studenti = this.facade.studenti;
 
-  readonly filtroTesto = signal('');
+  readonly filtroCampi = signal({nome: '', cognome: ''});
 
   readonly studentiFiltrati = computed(() => {
-    const filtro = this.filtroTesto().toLowerCase().trim();
+    const{nome, cognome} = this.filtroCampi();
 
-    if(!filtro) return this.studenti();
+    const filtroNome = nome.toLowerCase().trim();
+    const filtroCognome = cognome.toLowerCase().trim();
+
+    if(!filtroNome && !filtroCognome) {
+      return this.studenti();
+    }
 
     return this.studenti().filter(item => {
-      // Filtra tenendo conto sia del nome che del cognome, con l'operatore || mi faceva cercare solo nome o cognome
-      const nomeCompleto = `${item.nome} ${item.cognome}`.toLowerCase();
-      // Controlla se il nominativo inserito è contenuto (per questo .includes())
-      return nomeCompleto.includes(filtro);
-    });
+      const nomeTrovato = !filtroNome || item.nome.toLowerCase().includes(filtroNome);
+      const cognomeTrovato = !filtroCognome || item.cognome.toLowerCase().includes(filtroCognome);
 
+      return nomeTrovato && cognomeTrovato;
+    })
   });
+
+  // Funzione chiamata dall'HTML quando il componente Filtro lancia l'evento (filtroApplicato) da filtro-studenti.ts
+  // Riceve l'oggetto event (con nome e cognome) e lo invia dentro al Signal
+  onFiltroApplicato(event: {nome: string, cognome: string}): void {
+    this.filtroCampi.set(event);
+  }
 
   onCardClick(item: StudenteRTO): void {
     console.log("Selezionato: ", item);
