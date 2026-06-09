@@ -4,13 +4,20 @@
 
     <app-filtro-studenti (filtroApplicato)="onFiltroApplicato($event)" />
 
-    @if (studentiFiltrati().length === 0) {
+    @if (facade.loading()) {
+        <div class="text-center my-5">
+            <div class="spinner-border" role="status"></div>
+        </div>
+    } @else if (facade.errore()) {
+        <div class="alert alert-danger">{{facade.errore()}}</div>
+    } @else if (facade.studenti().length === 0) {
         <div class="alert alert-info">Nessun elemento trovato</div>
     } @else {
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-3">
-            @for (item of studentiFiltrati(); track item.idStudente) {
-                <div class="col-md-4">
-                    <!-- Momentaneamente uso un'unica [image] per tutti gli studenti -->
+            
+            @for (item of facade.studenti(); track item.idStudente) {
+                <div class="col-md-4"> 
+                    
                     <app-card
                         [titolo]="item.nome + ' ' + item.cognome"
                         [descrizione]="item.codiceStudente"
@@ -18,6 +25,7 @@
                         (selezionato)="goToDettaglio(item.idStudente)"
                     >
                     </app-card>
+
                 </div>
             }
         </div>

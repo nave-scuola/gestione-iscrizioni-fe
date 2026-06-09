@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Card } from '../../../../shared/components/card/card';
 import { StudenteRTO } from '../../models/studente.model';
 import { StudenteFacade } from '../../services/studente-facade';
@@ -13,8 +13,8 @@ import { FiltroStudentiComponent } from "../../components/filtro-studenti/filtro
   templateUrl: './lista-studenti.html',
   styleUrl: './lista-studenti.css',
 })
-export class ListaStudenti {
-  private facade = inject(StudenteFacade);
+export class ListaStudenti implements OnInit {
+  protected facade = inject(StudenteFacade);
   private router = inject(Router);
 
   readonly studenti = this.facade.studenti;
@@ -51,6 +51,10 @@ export class ListaStudenti {
 
   goToDettaglio(idStudente: number): void {
     this.router.navigate(['/studenti', idStudente]);
+  }
+
+  ngOnInit(): void {
+    this.facade.loadAll();
   }
 
 }
