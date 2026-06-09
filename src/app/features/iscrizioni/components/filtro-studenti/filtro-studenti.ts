@@ -1,5 +1,6 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FiltroStudenti } from '../../models/filtro-studenti.model';
 
 @Component({
   selector: 'app-filtro-studenti',
@@ -7,10 +8,10 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './filtro-studenti.html',
   styleUrl: './filtro-studenti.css',
 })
-export class FiltroStudenti {
+export class FiltroStudentiComponent {
   private fb = inject(FormBuilder);
 
-  filtroApplicato = output<{nome: string, cognome: string}>();
+  filtroApplicato = output<FiltroStudenti>();
 
   filtroForm = this.fb.nonNullable.group({
     nome: [''],

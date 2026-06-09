@@ -4,12 +4,12 @@ import { StudenteRTO } from '../../models/studente.model';
 import { StudenteFacade } from '../../services/studente-facade';
 import { Router } from '@angular/router';
 import { ListaCorsi } from '../lista-corsi/lista-corsi';
-import { FiltroStudenti } from "../../components/filtro-studenti/filtro-studenti";
+import { FiltroStudentiComponent } from "../../components/filtro-studenti/filtro-studenti";
 
 @Component({
   selector: 'app-lista-studenti',
   standalone: true,
-  imports: [Card, ListaCorsi, FiltroStudenti],
+  imports: [Card, ListaCorsi, FiltroStudentiComponent],
   templateUrl: './lista-studenti.html',
   styleUrl: './lista-studenti.css',
 })
