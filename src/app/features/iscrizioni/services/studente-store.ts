@@ -27,7 +27,7 @@ export class StudenteStore {
     });
   }
   
-  /*
+  /* Parte commentata che rimuoverò nel prossimo Task
   private readonly _studenti = signal<StudenteRTO[]>([
     {idStudente: 1, nome: 'Mario', cognome: 'Rossi', email: 'mario.rossi@email.it', citta: 'Napoli', cf: 'MRGSFE85D67V480F', codiceStudente: 'STU-001'},
     {idStudente: 2, nome: 'Luigi', cognome: 'Verdi', email: 'luigi.verdi@email.it', citta: 'Milano', cf: 'LGVRDE85D67U789G', codiceStudente: 'STU-002'},
