@@ -14,5 +14,5 @@ export class DettaglioStudente {
 
   private facade = inject(StudenteFacade);
 
-  readonly studente = computed(() => this.facade.getById(Number(this.id())));
+  //readonly studente = computed(() => this.facade.getById(Number(this.id())));
 }

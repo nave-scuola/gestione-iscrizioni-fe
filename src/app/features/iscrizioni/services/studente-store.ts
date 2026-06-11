@@ -1,10 +1,33 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { StudenteRTO } from '../models/studente.model';
+import { StudenteApi } from './studente.api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudenteStore {
+
+  private api = inject(StudenteApi);
+
+  private readonly _studenti = signal<StudenteRTO[]>([]);
+  readonly studenti = this._studenti.asReadonly();
+
+  private readonly _loading = signal(false);
+  readonly loading = this._loading.asReadonly();
+
+  private readonly _errore = signal<string | null>(null);
+  readonly errore = this._errore.asReadonly();
+
+  loadAll(): void {
+    this._loading.set(true);
+    this._errore.set(null);
+    this.api.getAll().subscribe({
+      next: items => {this._studenti.set(items); this._loading.set(false);},
+      error: () => {this._errore.set('Errore nel caricamento'); this._loading.set(false);}
+    });
+  }
+  
+  /* Parte commentata che rimuoverò nel prossimo Task
   private readonly _studenti = signal<StudenteRTO[]>([
     {idStudente: 1, nome: 'Mario', cognome: 'Rossi', email: 'mario.rossi@email.it', citta: 'Napoli', cf: 'MRGSFE85D67V480F', codiceStudente: 'STU-001'},
     {idStudente: 2, nome: 'Luigi', cognome: 'Verdi', email: 'luigi.verdi@email.it', citta: 'Milano', cf: 'LGVRDE85D67U789G', codiceStudente: 'STU-002'},
@@ -19,6 +42,6 @@ export class StudenteStore {
   getById(id: number): StudenteRTO | undefined {
     return this._studenti().find(item => item.idStudente === id);
   }
-
+  */
 
 }

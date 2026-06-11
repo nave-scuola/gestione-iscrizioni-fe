@@ -108,6 +108,9 @@
             },
             "development": {
               "buildTarget": "gestione-iscrizioni-fe:build:development"
+            },
+            "github": {
+              "buildTarget": "gestione-iscrizioni-fe:build:github"
             }
           },
           "defaultConfiguration": "development"
